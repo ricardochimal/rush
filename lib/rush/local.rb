@@ -317,7 +317,7 @@ class Rush::Connection::Local
 		shell = reset_environment ? "env -i bash" : "bash"
 
 		if user and user != ""
-			out, err = sh.execute "cd /; sudo -H -u #{user} \"#{shell}\"", :stdin => command
+			out, err = sh.execute "cd /; sudo -H -u #{user} sh -c \"#{shell}\"", :stdin => command
 		else
 			out, err = sh.execute shell, :stdin => command
 		end
